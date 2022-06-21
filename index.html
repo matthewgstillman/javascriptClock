@@ -59,8 +59,23 @@
         background: black;
         position: absolute;
         top: 50%;
+        transform-origin: 100%;
+        transform: rotate(90deg);
+        transition: all 0.05s;
+        transition-timing-function: cubic-bezier(0.1, 2.7, 0.58, 1);
       }
     </style>
-    <script src="" async defer></script>
+    <script>
+      const secondHand = document.querySelector(".second-hand");
+      const setDate = () => {
+        const now = new Date();
+        const seconds = now.getSeconds();
+        const secoondsDegrees = (seconds / 60) * 360;
+        secondHand.style.transform = `rotate(${secoondsDegrees}deg)`;
+        console.log(seconds);
+      };
+
+      setInterval(setDate, 1000);
+    </script>
   </body>
 </html>
